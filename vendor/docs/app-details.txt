@@ -1,0 +1,60 @@
+Vendor Application :
+Main Screens for Vendor :
+
+1. Login Screen/Signup Screen
+2. My Profile and Profile edit screen
+3. Place Order Screen -> Selection Location Screen 
+4. My orders Screen - Current and Completed Order
+5. Order Detail Screen
+
+Navigation drawer should basically has three entries - My Profile, Place Order and My Order Screen along with logout button at the bottom of the drawer.
+Need to keep track whether vendor is logged in or not. Need to maintain session for it. If the vendor is logged in, then when we open the app, Place order screen should be opened always. If the vendor is logging in, then it should open My Profile screen. As soon as we open it for the second time, Place order screen should be opened.
+
+a. For Login Screen/Signup screen, we can refer to apps like facebook, Google, MakeMyTrip, Parsel, and many more. Anyone will do. 
+
+b. For My Profile screen, we can take reference of Contact detail screen. For Profile edit screen, we can refer contact edit screen. We should have a floating button to take us to the place order screen.
+
+c. For Place Order Screen, we basically need 5 buttons in total - 4 buttons mentioning predefined time - 10 min, 20 mins, 30 mins, 1 hour. The last button will help in opening a custom dialog to help select time when the boy will be required to pick the order. As soon as one of these buttons is clicked, we move to select location screen. When the app is used for the first time, we sync the location from the server. As the orders are placed, a favorite location table should be created for each vendor which will keep top 5 frequently picked location. Location should be picked from this table if this table has entries else, should be picked from server. This table should be synced every morning at 9 am to the central database.
+
+d. In My order screen, there will be 2 fragments to implement current order (which are in progressing state) and the completed order.
+Current order screen will show order in tabular form. It will show order ID, Admin status and order status. Clicking any row will open the details of the order. Based on admin and order status, fields will be displayed as below. 
+If admin status is pending, then details screen should order ID, order request time, time to pickup, locality/area of delivery, admin status and cancellation button. 
+If the admin status is accepted, then the detail screen should show order ID, request time, time to pickup, locality/area of delivery, admin status, delivery boy assigned and cancellation button.
+If the admin status is assigned, then following fields should be displayed - order ID, request time, time to pickup, locality/area of delivery, admin status, order status (initially as pending), delivery boy assigned and cancellation button.
+If the admin status is assigned, and order status as picked, then following fields should be displayed - order ID, request time, pickup time, locality/area of delivery, admin status, order status (as picked), delivery boy assigned, bill price, bill image, customer phone number and cancellation button.
+Now when the order status is changed to delivered, then following fields should be displayed - order ID, request time, pickup time, drop time, locality/area of delivery, admin status (as completed), order status (as delivered), delivery boy assigned, bill price, bill image, and customer phone number.
+
+e. Order detail screen has been explained above.
+
+f. We also need setting and help screen in activity menu option to take us to setting and help for the app. Need to refer Samsung apps like Story album, Scrapbook and others for details.
+
+this is it for Vendor. Agar kuch missing lage to let me know. Agar mujhe kuch aur aaya dimaag mein to will update you with the latest document.
+
+
+
+Delivery Boy Application:
+Main Screen for delivery boy:
+1. Login/Signup Screen as above.
+2. My Profile/ Edit Profile screen as above.
+3. My Orders Screen - Current and Completed orders.
+4. Order Detail Screen.
+
+a. Login/ Sign up screen can be implemented like above for vendor.
+
+b. My Profile/Edit Profile screen can be implemented like above for vendor.
+
+c. In my Orders Screen there will be 2 fragments to implement current order (which are in progressing state) and the completed order.
+Current order screen will show order in tabular form. It will show order ID, Locality/Area and order status button (Will be shown as A for assigned, P for Picked, D for delivered). Clicking any row will open the details of the order. Based on order status, fields will be displayed.
+As soon as Admin status is changed to assigned in the database, the order status will change to pending/waiting for pickup and will appear in current order screen for the delivery boy to which the order was assigned to. Status will be Assigned in the application of delivery boy. Button with text as "A" will come. 
+When the delivery boy picks up the order, he should basically change the status of the order to picked. He will do this by clicking on "A" button. As soon as he clicks "A" button, it will open a new activity to make the boy enter customer phone number, Click picture of bill and save it, and enter order price. As soon as these details are entered and submitted, they are send to central database and status is changed to "P" that is picked.
+As soon as details are submitted, the submit button in the detail screen should be disabled. All the filled details along with current location of the delivery boy should be sent to the server.
+When the delivery boy delivers the order, he should change the status to delivered. He will do that by clicking "P" button. When he click on button with text "P". it should ask for confirmation dialog clicking yes to which will result in completion of the order.
+
+d. Order Detail screen as described above.
+
+Delivery boy app should make sure that location services and data services are enabled all the time when the delivery boy is logged in. If they are not enabled, app should enable before delivery boy enters the app. No need to ask for confirmation regarding this.
+Delivery boy app should send current location every 5-10 seconds to the server to let the server know about the location of the delivery boy at any point of time.
+
+
+At present, this is the information I would like to have in both the applications. If you think something can be added/improved upon, feel free to implement and make the changes and update me regarding the changes done.
+Applications should have package and name difference - DBoyz-vendor and DBoyz-Boy. Third will be DBoyz - only for Customer.
